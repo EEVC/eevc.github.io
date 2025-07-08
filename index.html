@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibration Control & Seismic Engineering Laboratory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #212529;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #212529;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #212529;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #212529 0%, #343a40 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.03)"><path d="M0,50 Q250,20 500,50 T1000,50 L1000,100 L0,100 Z"/></svg>') repeat-x;
+            animation: subtleWave 25s linear infinite;
+        }
+
+        @keyframes subtleWave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #212529;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section:nth-child(even) {
+            background: white;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: #212529;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: #212529;
+        }
+
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .research-card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #dee2e6;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #212529;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .research-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .research-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: #212529;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+        }
+
+        .research-card p {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .research-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .research-card li {
+            padding: 0.6rem 0;
+            color: #495057;
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        .research-card li:last-child {
+            border-bottom: none;
+        }
+
+        .research-card li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #212529;
+            font-weight: 500;
+        }
+
+        /* Faculty */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .faculty-card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .faculty-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #212529;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .faculty-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #212529;
+            font-weight: 500;
+        }
+
+        .faculty-card .position {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .faculty-card .details {
+            text-align: left;
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .faculty-card .details strong {
+            color: #212529;
+        }
+
+        /* Publications */
+        .publication-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e9ecef;
+            border-left: 3px solid #212529;
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .publication-title {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #212529;
+            line-height: 1.5;
+        }
+
+        .publication-authors {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-journal {
+            color: #495057;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .publication-year {
+            color: #6c757d;
+            font-size: 0.85rem;
+            float: right;
+        }
+
+        /* Contact */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #212529;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #212529;
+            font-weight: 500;
+        }
+
+        .contact-card p {
+            color: #6c757d;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #212529;
+            color: #adb5bd;
+            text-align: center;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Statistics Section */
+        .stats {
+            background: #212529;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #adb5bd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .research-grid,
+            .faculty-grid,
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Professional animations */
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Vibration Control & Seismic Engineering Lab</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#faculty">Faculty</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Vibration Control & Seismic Engineering Laboratory</h1>
+            <p class="subtitle">Advanced Research in Structural Safety & Earthquake Engineering</p>
+            <p class="description">Pioneering innovative solutions for structural vibration control and seismic resilience through cutting-edge research, experimental validation, and practical applications.</p>
+            <a href="#research" class="cta-button">Explore Research</a>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Publications</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Research Projects</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Graduate Students</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="section">
+        <div class="container">
+            <h2 class="fade-in">Research Areas</h2>
+            <div class="research-grid">
+                <div class="research-card fade-in">
+                    <h3>Structural Vibration Control</h3>
+                    <p>Development of advanced control systems for mitigating structural vibrations in buildings and bridges under dynamic loading conditions.</p>
+                    <ul>
+                        <li>Active vibration control systems</li>
+                        <li>Passive damping technologies</li>
+                        <li>Semi-active control devices</li>
+                        <li>Tuned mass damper design</li>
+                        <li>Magnetorheological dampers</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card fade-in">
+                    <h3>Seismic Engineering</h3>
+                    <p>Comprehensive analysis and evaluation of structural response to seismic events, with focus on performance-based design methodologies.</p>
+                    <ul>
+                        <li>Seismic response analysis</li>
+                        <li>Earthquake-resistant design</li>
+                        <li>Structural vulnerability assessment</li>
+                        <li>Performance-based seismic design</li>
+                        <li>Ground motion characterization</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card fade-in">
+                    <h3>Smart Structural Systems</h3>
+                    <p>Integration of advanced sensing technologies and IoT solutions for intelligent structural monitoring and damage detection.</p>
+                    <ul>
+                        <li>Structural health monitoring</li>
+                        <li>Real-time damage detection</li>
+                        <li>Wireless sensor networks</li>
+                        <li>AI-based diagnostic systems</li>
+                        <li>Digital twin technologies</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card fade-in">
+                    <h3>Experimental Research</h3>
+                    <p>State-of-the-art experimental facilities for validating theoretical models and testing innovative structural systems.</p>
+                    <ul>
+                        <li>Shake table testing</li>
+                        <li>Hybrid simulation</li>
+                        <li>Field monitoring programs</li>
+                        <li>Scale model experiments</li>
+                        <li>Material characterization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faculty" class="section">
+        <div class="container">
+            <h2 class="fade-in">Faculty & Staff</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card fade-in">
+                    <div class="faculty-avatar">KP</div>
+                    <h3>Dr. Kim Professor</h3>
+                    <p class="position">Principal Investigator & Professor</p>
+                    <div class="details">
+                        <p><strong>Specialization:</strong> Structural Vibration Control, Seismic Engineering</p>
+                        <p><strong>Education:</strong> Ph.D. in Civil Engineering, Seoul National University</p>
+                        <p><strong>Experience:</strong> 15+ years in structural engineering research</p>
+                        <p><strong>Email:</strong> professor@university.edu</p>
+                    </div>
+                </div>
+                
+                <div class="faculty-card fade-in">
+                    <div class="faculty-avatar">PR</div>
+                    <h3>Dr. Park Researcher</h3>
+                    <p class="position">Research Professor</p>
+                    <div class="details">
+                        <p><strong>Specialization:</strong> Smart Structural Systems, IoT Applications</p>
+                        <p><strong>Education:</strong> Ph.D. in Civil Engineering, KAIST</p>
+                        <p><strong>Experience:</strong> 8+ years in smart structure research</p>
+                        <p><strong>Email:</strong> researcher@university.edu</p>
+                    </div>
+                </div>
+                
+                <div class="faculty-card fade-in">
+                    <div class="faculty-avatar">LS</div>
+                    <h3>Dr. Lee Scientist</h3>
+                    <p class="position">Senior Research Scientist</p>
+                    <div class="details">
+                        <p><strong>Specialization:</strong> Experimental Mechanics, Seismic Testing</p>
+                        <p><strong>Education:</strong> Ph.D. in Structural Engineering, UC Berkeley</p>
+                        <p><strong>Experience:</strong> 12+ years in experimental research</p>
+                        <p><strong>Email:</strong> scientist@university.edu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="section">
+        <div class="container">
+            <h2 class="fade-in">Selected Publications</h2>
+            <div class="publication-list">
+                <div class="publication-item slide-in-left">
+                    <div class="publication-title">Active Control of High-Rise Building Structures Using Semi-Active Magnetorheological Dampers</div>
+                    <div class="publication-authors">K. Professor, P. Researcher, L. Scientist</div>
+                    <div class="publication-journal">Journal of Structural Engineering, ASCE</div>
+                    <div class="publication-year">2023</div>
+                </div>
+                
+                <div class="publication-item slide-in-left">
+                    <div class="publication-title">Seismic Performance Assessment of Reinforced Concrete Buildings with Viscous Dampers</div>
+                    <div class="publication-authors">P. Researcher, K. Professor, J. Graduate</div>
+                    <div class="publication-journal">Earthquake Engineering & Structural Dynamics</div>
+                    <div class="publication-year">2023</div>
+                </div>
+                
+                <div class="publication-item slide-in-left">
+                    <div class="publication-title">Machine Learning-Based Structural Health Monitoring Using Wireless Sensor Networks</div>
+                    <div class="publication-authors">L. Scientist, K. Professor, M. Student</div>
+                    <div class="publication-journal">Smart Materials and Structures</div>
+                    <div class="publication-year">2023</div>
+                </div>
+                
+                <div class="publication-item slide-in-left">
+                    <div class="publication-title">Experimental Investigation of Seismic Retrofit Strategies for Existing RC Buildings</div>
+                    <div class="publication-authors">J. Graduate, P. Researcher, K. Professor</div>
+                    <div class="publication-journal">Engineering Structures</div>
+                    <div class="publication-year">2022</div>
+                </div>
+                
+                <div class="publication-item slide-in-left">
+                    <div class="publication-title">Performance-Based Design of Tuned Mass Dampers for Wind-Induced Vibration Control</div>
+                    <div class="publication-authors">K. Professor, L. Scientist, S. Researcher</div>
+                    <div class="publication-journal">Journal of Wind Engineering and Industrial Aerodynamics</div>
+                    <div class="publication-year">2022</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="fade-in">Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📍</div>
+                    <h3>Address</h3>
+                    <p>Department of Civil Engineering<br>
+                    College of Engineering<br>
+                    University Campus, Room 000<br>
+                    Seoul, South Korea</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone</h3>
+                    <p>+82-2-000-0000</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>lab@university.edu</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">🕒</div>
+                    <h3>Office Hours</h3>
+                    <p>Monday - Friday<br>
+                    9:00 AM - 6:00 PM<br>
+                    (By appointment)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Vibration Control & Seismic Engineering Laboratory. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in-left').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Counter animation for statistics
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current) + '+';
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
