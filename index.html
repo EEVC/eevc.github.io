@@ -3,383 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EEVC Lab - Extreme Engineering & Vibration Control</title>
+    <title>EEVC Lab - Earthquake Engineering & Vibration Control</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <style>
-        /* --- 1. 기본 설정 (Reset & Typography) --- */
-        :root {
-            --primary-color: #00305e; /* 짙은 네이비 (학구적 신뢰감) */
-            --secondary-color: #0056b3; /* 밝은 블루 (강조) */
-            --accent-color: #f4f7f6; /* 배경색 */
-            --text-dark: #222;
-            --text-gray: #555;
-            --white: #ffffff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Roboto', 'Noto Sans KR', sans-serif;
-            line-height: 1.7;
-            color: var(--text-dark);
-            background-color: var(--white);
-        }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-
-        /* --- 2. 헤더 & 네비게이션 --- */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-        }
-        
-        .logo span { color: var(--secondary-color); }
-
-        nav ul { display: flex; gap: 25px; }
-        
-        nav a {
-            font-weight: 500;
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--primary-color);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--secondary-color);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after { width: 100%; }
-
-        /* --- 3. 공통 섹션 스타일 --- */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-bottom: 1px solid #eee;
-            scroll-margin-top: 70px; /* 헤더 높이만큼 보정 */
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            display: inline-block;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--secondary-color);
-            margin: 10px auto 0;
-        }
-
-        .section-desc {
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* --- 4. Home (Hero) --- */
-        .hero {
-            background: linear-gradient(rgba(0,48,94,0.05), rgba(0,48,94,0.05)), url('https://source.unsplash.com/1600x900/?architecture,structure') no-repeat center/cover;
-            padding: 8rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: #444;
-            max-width: 800px;
-            margin: 0 auto 2.5rem;
-            text-align: justify; /* 양쪽 정렬 */
-            text-align-last: center;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 5px;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0,86,179,0.3);
-        }
-
-        .btn:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--secondary-color);
-            color: var(--secondary-color);
-            margin-left: 10px;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--secondary-color);
-            color: white;
-        }
-
-        /* --- 5. About (Research Areas) --- */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .research-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            border-top: 4px solid var(--secondary-color);
-        }
-
-        .research-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .research-icon {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .research-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        /* --- 6. Professor --- */
-        .prof-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4rem;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .prof-img {
-            flex: 1;
-            min-width: 300px;
-            max-width: 350px;
-            height: 400px;
-            background-color: #ddd; /* 이미지 없을 때 회색 배경 */
-            background-image: url('https://via.placeholder.com/350x400?text=Prof.+Photo'); /* 플레이스홀더 */
-            background-size: cover;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .prof-info {
-            flex: 2;
-            min-width: 300px;
-        }
-
-        .prof-name {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .prof-title {
-            font-size: 1.1rem;
-            color: var(--secondary-color);
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-
-        .prof-details h4 {
-            font-size: 1.1rem;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            margin-top: 20px;
-        }
-
-        /* --- 7. Team --- */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .member-card {
-            text-align: center;
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #eee;
-        }
-
-        .member-photo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: #eee;
-            margin: 0 auto 1rem;
-            background-image: url('https://via.placeholder.com/100?text=User');
-            background-size: cover;
-        }
-
-        .member-name { font-weight: 700; color: var(--text-dark); }
-        .member-role { font-size: 0.9rem; color: var(--text-gray); margin-top: 5px; }
-
-        /* --- 8. Publications --- */
-        .pub-list {
-            border-top: 2px solid var(--primary-color);
-        }
-
-        .pub-item {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .pub-year {
-            font-weight: 700;
-            color: var(--secondary-color);
-            min-width: 60px;
-        }
-
-        .pub-content h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .pub-content p {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-        }
-
-        /* --- 9. Contact --- */
-        .contact-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .contact-details {
-            flex: 1;
-            min-width: 300px;
-            background: var(--accent-color);
-            padding: 2rem;
-            border-radius: 10px;
-        }
-
-        .contact-item {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-item i {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-        }
-
-        .map-container {
-            flex: 1;
-            min-width: 300px;
-            height: 350px;
-            background: #eee;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        /* --- 10. Footer --- */
-        footer {
-            background-color: #222;
-            color: #aaa;
-            padding: 3rem 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        .footer-logo {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        /* 반응형 모바일 */
-        @media (max-width: 768px) {
-            .nav-container { flex-direction: column; }
-            nav ul { margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 2rem; }
-            .prof-container { flex-direction: column; text-align: center; }
-            .prof-details h4 { text-align: left; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -388,91 +16,92 @@
             <div class="logo"><a href="#home">EEVC <span>Lab</span></a></div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#professor">Professor</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#about">연구 분야</a></li>
+                    <li><a href="#professor">지도교수</a></li>
+                    <li><a href="#team">연구실 구성원</a></li>
+                    <li><a href="#publications">연구실적</a></li>
+                    <li><a href="#projects">프로젝트</a></li>
+                    <li><a href="#contact">연락처</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <section id="home" class="hero">
-        <h1>EEVC Laboratory</h1>
+        <h1>EEVC 연구실</h1>
         <p>
-            <b>Extreme Engineering & Vibration Control</b><br><br>
+            <b>지진공학 및 진동제어 연구실</b><br><br>
             우리 연구실은 내진·방호·진동제어를 중심으로 강구조 및 합성구조의 성능을 정밀하게 평가하고 설계기법을 개발합니다. 
             고급 비선형 유한요소해석과 실험을 결합하여 실무 적용성이 높은 구조공학 기술을 선도합니다.
         </p>
-        <p style="font-size: 0.95rem; color: #666; font-style: italic;">
-            "Developing advanced structural solutions for seismic safety and vibration control."
+        <p>
+            "지진 안전과 진동 제어를 위한 첨단 구조 솔루션 개발"
         </p>
-        <div style="margin-top: 2rem;">
-            <a href="#about" class="btn">Research Areas</a>
-            <a href="#contact" class="btn btn-outline">Contact Us</a>
+        <div>
+            <a href="#about" class="btn">연구 분야</a>
+            <a href="#contact" class="btn btn-outline">연락처</a>
         </div>
     </section>
 
     <section id="about">
         <div class="section-header">
-            <h2 class="section-title">Research Areas</h2>
-            <p class="section-desc">We focus on structural dynamics, extreme loading scenarios, and advanced simulation techniques.</p>
+            <h2 class="section-title">연구 분야</h2>
+            <p class="section-desc">구조 동역학, 극한 하중 시나리오 및 고급 시뮬레이션 기술에 중점을 둡니다.</p>
         </div>
         
         <div class="research-grid">
             <div class="research-card">
                 <i class="fas fa-house-damage research-icon"></i>
-                <h3>Seismic Performance</h3>
+                <h3>내진성능 평가</h3>
                 <p>비구조요소 내진성능 평가 및 합성모멘트 골조 접합부의 거동 분석을 통해 지진 안전성을 확보하는 설계 기법을 연구합니다.</p>
             </div>
             <div class="research-card">
                 <i class="fas fa-bomb research-icon"></i>
-                <h3>Blast & Impact</h3>
+                <h3>방호 구조</h3>
                 <p>SC 구조 방폭 실험 및 방호 구조 설계. 폭발 및 충격 하중 하에서의 구조물 거동을 정밀하게 해석하고 방어 기술을 개발합니다.</p>
             </div>
             <div class="research-card">
                 <i class="fas fa-wave-square research-icon"></i>
-                <h3>Vibration Control</h3>
-                <p>VDV 기반 진동 평가 및 제어 기술. 건물의 사용성을 높이고 진동으로 인한 피로 및 손상을 최소화하는 제어 시스템을 연구합니다.</p>
+                <h3>진동제어</h3>
+                <p>진동 평가 및 제어 기술. 건물의 사용성을 높이고 진동으로 인한 피로 및 손상을 최소화하는 제어 시스템을 연구합니다.</p>
             </div>
             <div class="research-card">
                 <i class="fas fa-laptop-code research-icon"></i>
-                <h3>Non-linear Analysis</h3>
+                <h3>비선형해석</h3>
                 <p>Rocking, Sliding 등 구조물의 비선형 거동을 예측하기 위한 고급 유한요소해석(FEM) 시뮬레이션을 수행합니다.</p>
             </div>
         </div>
     </section>
 
-    <section id="professor" style="background-color: #f9f9f9;">
+    <section id="professor">
         <div class="section-header">
-            <h2 class="section-title">Professor</h2>
+            <h2 class="section-title">지도교수</h2>
         </div>
         <div class="prof-container">
             <div class="prof-img" title="Please replace with actual photo"></div>
             
             <div class="prof-info">
-                <div class="prof-name">Prof. Sungyong Kim</div>
-                <div class="prof-title">Dept. of Architectural Engineering, Changwon National University</div>
+                <div class="prof-name">김성용 교수</div>
+                <div class="prof-title">창원대학교 건축공학과</div>
                 
                 <p>
-                    김성용 교수는 구조 동역학 및 내진 설계 분야의 전문가로서, 
-                    창원대학교 건축공학과에서 학생들을 지도하며 극한 공학 및 진동 제어 연구실(EEVC Lab)을 이끌고 있습니다.
+                    김성용 교수는 구조 동역학 및 내진설계 분야의 전문가로서, 
+                    창원대학교 건축공학과에서 학생들을 지도하며 EEVC Lab을 이끌고 있습니다.
                 </p>
 
                 <div class="prof-details">
-                    <h4>Education</h4>
+                    <h4>학력</h4>
                     <ul>
-                        <li><i class="fas fa-graduation-cap"></i> Ph.D. in Architectural Engineering (University Name)</li>
-                        <li><i class="fas fa-graduation-cap"></i> M.S. in Architectural Engineering</li>
+                        <li><i class="fas fa-graduation-cap"></i> 서울대학교 건축공학 박사</li>
+                        <li><i class="fas fa-graduation-cap"></i> 서울대학교 건축공학 석사</li>
                     </ul>
 
-                    <h4>Contact</h4>
+                    <h4>연락처</h4>
                     <ul>
                         <li><i class="fas fa-envelope"></i> sungyong.kim@changwon.ac.kr</li>
-                        <li><i class="fas fa-phone-alt"></i> +82 (55) 213-3806</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Engineering Building 52-301</li>
+                        <li><i class="fas fa-phone-alt"></i> 055-213-3806</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 창원대학교 52호관 301호</li>
                     </ul>
                 </div>
             </div>
@@ -481,53 +110,53 @@
 
     <section id="team">
         <div class="section-header">
-            <h2 class="section-title">Our Team</h2>
-            <p class="section-desc">Meet our dedicated researchers and alumni.</p>
+            <h2 class="section-title">연구실 구성원</h2>
+            <p class="section-desc">연구실의 현재 구성원과 졸업생을 소개합니다.</p>
         </div>
 
-        <h3 style="margin-bottom: 20px; color: var(--primary-color);">Current Members</h3>
+        <h3>현재 구성원</h3>
         <div class="team-grid">
             <div class="member-card">
                 <div class="member-photo"></div>
-                <div class="member-name">Researcher Name</div>
-                <div class="member-role">Ph.D. Student</div>
+                <div class="member-name">연구원 이름</div>
+                <div class="member-role">박사과정</div>
             </div>
             <div class="member-card">
                 <div class="member-photo"></div>
-                <div class="member-name">Researcher Name</div>
-                <div class="member-role">M.S. Student</div>
+                <div class="member-name">연구원 이름</div>
+                <div class="member-role">석사과정</div>
             </div>
             <div class="member-card">
                 <div class="member-photo"></div>
-                <div class="member-name">Researcher Name</div>
-                <div class="member-role">M.S. Student</div>
+                <div class="member-name">연구원 이름</div>
+                <div class="member-role">석사과정</div>
             </div>
              <div class="member-card">
                 <div class="member-photo"></div>
-                <div class="member-name">Researcher Name</div>
-                <div class="member-role">Researcher</div>
+                <div class="member-name">연구원 이름</div>
+                <div class="member-role">학부연구생</div>
             </div>
         </div>
 
-        <h3 style="margin-bottom: 20px; color: var(--primary-color); margin-top: 40px;">Alumni</h3>
+        <h3>졸업생</h3>
         <div class="team-grid">
-            <div class="member-card" style="background: #f9f9f9;">
-                <div class="member-name">Alumni Name</div>
-                <div class="member-role">M.S. (2023)</div>
-                <div style="font-size: 0.8rem; color: #777; margin-top:5px;">Current: Company A</div>
+            <div class="member-card">
+                <div class="member-name">졸업생 이름</div>
+                <div class="member-role">석사 (2023)</div>
+                <div>소속: A회사</div>
             </div>
-             <div class="member-card" style="background: #f9f9f9;">
-                <div class="member-name">Alumni Name</div>
-                <div class="member-role">M.S. (2022)</div>
-                <div style="font-size: 0.8rem; color: #777; margin-top:5px;">Current: Company B</div>
+             <div class="member-card">
+                <div class="member-name">졸업생 이름</div>
+                <div class="member-role">석사 (2022)</div>
+                <div>소속: B회사</div>
             </div>
         </div>
     </section>
 
-    <section id="publications" style="background-color: #fff;">
+    <section id="publications">
         <div class="section-header">
-            <h2 class="section-title">Publications</h2>
-            <p class="section-desc">Selected list of recent research papers.</p>
+            <h2 class="section-title">연구실적</h2>
+            <p class="section-desc">최근 발표된 주요 연구 논문 목록입니다.</p>
         </div>
 
         <div class="pub-list">
@@ -561,45 +190,69 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: 30px;">
-            <a href="#" class="btn btn-outline" style="font-size: 0.9rem;">View All Publications via Google Scholar</a>
+            <a href="#" class="btn btn-outline">Google Scholar에서 전체 보기</a>
         </div>
     </section>
 
-    <section id="contact" style="background-color: #f4f7f6;">
+    <section id="projects">
         <div class="section-header">
-            <h2 class="section-title">Contact Us</h2>
+            <h2 class="section-title">프로젝트</h2>
+            <p class="section-desc">현재 진행 중이거나 완료된 주요 연구 프로젝트입니다.</p>
+        </div>
+        <div class="research-grid">
+            <div class="research-card">
+                <i class="fas fa-cogs research-icon"></i>
+                <h3>비구조요소 내진성능 평가 기술 개발</h3>
+                <p>지진 발생 시 비구조요소의 손상을 최소화하고 건물의 기능을 유지하기 위한 내진성능 평가 및 보강 기술을 개발합니다.</p>
+            </div>
+            <div class="research-card">
+                <i class="fas fa-shield-alt research-icon"></i>
+                <h3>SC 구조물 방호성능 고도화 연구</h3>
+                <p>원자력발전소 등 중요 시설물에 사용되는 SC(Steel Plate Concrete) 구조물의 폭발 및 충격에 대한 저항 성능을 높이는 연구를 수행합니다.</p>
+            </div>
+            <div class="research-card">
+                <i class="fas fa-building research-icon"></i>
+                <h3>모듈러 건축물 진동 사용성 평가</h3>
+                <p>모듈러 공법으로 건설된 건축물의 진동 성능을 평가하고, 사용자가 느끼는 불편함을 최소화하기 위한 설계 기준을 제시합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header">
+            <h2 class="section-title">연락처</h2>
         </div>
         
         <div class="contact-wrapper">
             <div class="contact-details">
-                <h3 style="margin-bottom: 2rem;">Get in Touch</h3>
+                <h3>오시는 길 & 정보</h3>
                 <div class="contact-item">
                     <i class="fas fa-university"></i>
                     <div>
-                        <strong>Affiliation</strong><br>
-                        Changwon National University<br>Dept. of Architectural Engineering
+                        <strong>소속</strong><br>
+                        창원대학교<br>건축공학과
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marked-alt"></i>
                     <div>
-                        <strong>Location</strong><br>
-                        Engineering Building 52-301<br>
-                        20 Changwondae-ro, Uichang-gu, Changwon-si
+                        <strong>연구실 위치</strong><br>
+                        창원대학교 52호관 301호<br>
+                        경남 창원시 의창구 창원대학로 20
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <strong>Email</strong><br>
+                        <strong>이메일</strong><br>
                         <a href="mailto:sungyong.kim@changwon.ac.kr">sungyong.kim@changwon.ac.kr</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <strong>Phone</strong><br>
-                        +82 (55) 213-3806
+                        <strong>연락처 (교수실)</strong><br>
+                        055-213-3806
                     </div>
                 </div>
             </div>
@@ -607,24 +260,24 @@
             <div class="map-container">
                  <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3257.697425126135!2d128.6936!3d35.2456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356f32e679377489%3A0x6291350a86784010!2sChangwon%20National%20University!5e0!3m2!1sen!2skr!4v1620000000000!5m2!1sen!2skr" 
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    width="100%" height="100%" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo">EEVC Laboratory</div>
+        <div class="footer-logo">EEVC 연구실</div>
         <p>
-            Extreme Engineering & Vibration Control Lab<br>
-            Changwon National University, South Korea
+            지진공학 및 진동제어 연구실<br>
+            창원대학교, 대한민국
         </p>
-        <div style="margin-top: 20px;">
-            <a href="#" style="margin: 0 10px; color: #aaa;"><i class="fab fa-researchgate fa-lg"></i></a>
-            <a href="#" style="margin: 0 10px; color: #aaa;"><i class="fab fa-google fa-lg"></i></a>
-            <a href="#" style="margin: 0 10px; color: #aaa;"><i class="fas fa-envelope fa-lg"></i></a>
+        <div>
+            <a href="#"><i class="fab fa-researchgate fa-lg"></i></a>
+            <a href="#"><i class="fab fa-google fa-lg"></i></a>
+            <a href="#"><i class="fas fa-envelope fa-lg"></i></a>
         </div>
-        <p style="margin-top: 30px; font-size: 0.8rem; color: #666;">
+        <p>
             &copy; 2024 EEVC Laboratory. All rights reserved.
         </p>
     </footer>
