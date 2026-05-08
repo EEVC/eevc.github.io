@@ -38,5 +38,18 @@ title: "EEVC Lab"
 description: "Earthquake Engineering and Vibration Control Lab, Changwon National University"
 
 collections:
-  - publications
-  - news
+  publications:
+    output: false
+  news:
+    output: false
+  members:
+    output: true
+    permalink: /members/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: members
+    values:
+      layout: member
+      navbar_title: Members

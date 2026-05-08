@@ -9,26 +9,34 @@
                             <h6>Research Areas</h6>
                             <ul class="list pl-3 mb-1 small">
                                 {% for r in site.data.profile.research_areas %}
-                                <li>{{ r.name }}</li>
+                                <li class="mb-1">
+                                    <strong>{{ r.name }}</strong>
+                                    {% if r.description %}
+                                    <div class="text-muted">{{ r.description }}</div>
+                                    {% endif %}
+                                </li>
                                 {% endfor %}
                             </ul>
                         </div>
                     </div>
                     {% endif %}
 
-                    {% assign pi = site.data.members.pi[0] %}
+                    {% assign pi = site.members | where: "category", "pi" | first %}
                     {% if pi %}
                     <div class="col-lg-5">
                         <div class="mx-2 my-1" id="pi">
                             <h6>Principal Investigator</h6>
                             <div class="small">
-                                <div><strong>{{ pi.name }}</strong> &mdash; {{ pi.position }}</div>
+                                <div>
+                                    <strong><a href="{{ pi.url | relative_url }}">{{ pi.name }}</a></strong>
+                                    &mdash; {{ pi.position }}
+                                </div>
                                 <div class="text-muted">{{ pi.affiliation }}</div>
                                 <div>
                                     <a href="mailto:{{ pi.email | encode_email }}">
                                         <i class="fas fa-at"></i> {{ pi.email | replace: "@", "(at)" }}
                                     </a>
-                                    {% if pi.github %}
+                                    {% if site.data.display.show_social_icons and pi.github %}
                                     &middot;
                                     <a target="_blank" href="https://github.com/{{ pi.github }}">
                                         <i class="fab fa-github"></i> {{ pi.github }}

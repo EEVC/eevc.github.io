@@ -15,19 +15,22 @@ short_bio: >-
   <p>
     The <strong>Earthquake Engineering and Vibration Control (EEVC) Lab</strong>
     at Changwon National University, led by Prof. <a href="#pi">Sung-Yong Kim</a>,
-    works on the seismic and vibration performance of buildings and their
-    components &mdash; from steel and composite structural systems to
-    nonstructural components such as access floors, battery racks, and
-    distributed equipment.
+    studies the structural safety of buildings and equipment under
+    <strong>extreme loads</strong> &mdash; earthquake, blast, fire, and
+    human-induced vibration. Our work spans steel and composite structural
+    systems, moment-frame connections, braced frames, blast-resistant
+    protective structures, and nonstructural components such as access floors,
+    battery racks, generators, and distributed equipment.
   </p>
   <p>
-    Our research combines <strong>experiments</strong> (shake-table, UTM,
-    impact-echo and acceleration measurements), <strong>finite element analysis</strong>
-    (LS-DYNA, ABAQUS, MIDAS Gen, OpenSees), and <strong>data-driven methods</strong>
-    (FFT signal processing, generative models, full-waveform inversion) to
-    address real engineering problems &mdash; refractory wall diagnostics for
-    electric melting furnaces, seismic retrofit of telecom battery racks,
-    floor-vibration of timber buildings, and condition monitoring of cultural
+    Our methodology integrates <strong>full-scale and scaled-model experiments</strong>
+    (shake-table, UTM, impact-echo and acceleration measurements) with advanced
+    <strong>nonlinear finite element analysis</strong> (LS-DYNA, ABAQUS,
+    MIDAS Gen, OpenSees) and <strong>data-driven methods</strong> (FFT signal
+    processing, generative models, full-waveform inversion) &mdash; applied
+    to civil defense shelters, refractory wall diagnostics for electric
+    melting furnaces, seismic retrofit of telecom battery racks, floor
+    vibration of timber buildings, and condition monitoring of cultural
     heritage structures.
   </p>
 
@@ -35,8 +38,29 @@ short_bio: >-
 # portrait_url: /assets/images/photos/lab.jpg
 
 research_areas:
-- name: Seismic design &amp; retrofit of structural and nonstructural systems
-- name: Floor vibration of steel and timber-composite buildings
-- name: Impact-echo and elastic-wave-based diagnostics of refractory walls
-- name: Ductile design and shake-table testing of equipment anchorages
-- name: Data-driven and AI-assisted structural analysis
+- name: Non-structural Component Seismic Performance Evaluation
+  description: >-
+    Nonlinear FEA-based seismic evaluation of large nonstructural components
+    such as generators &mdash; capturing rocking and sliding behavior and
+    developing practical, code-ready design methods.
+- name: Composite Moment Frame Connection Seismic Performance
+  description: >-
+    Analysis-based verification of joint rotation performance using
+    finite-element models of composite connections, enabling reliable and
+    economical performance certification of welded steel and steel-concrete
+    composite joints.
+- name: Blast-Resistant Design and Protective Structures
+  description: >-
+    Blast design of civil defense shelters using nonlinear FEA and
+    SDOF-based analysis, with full-scale fabrication and static loading
+    tests of steel-concrete composite structures planned by 2026.
+- name: Braced Frame Optimization
+  description: >-
+    Parametric studies for optimal placement and cross-section design of
+    braces, balancing strength, stiffness, ductility, constructability,
+    and economy.
+- name: Vibration Control and Serviceability
+  description: >-
+    Vibration performance evaluation using VDV concepts for sensitive
+    facilities such as hospitals and semiconductor plants, together with
+    design and optimization of tuned mass dampers for floors and structures.

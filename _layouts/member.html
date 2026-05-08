@@ -1,0 +1,148 @@
+---
+layout: default
+---
+
+{% assign category_label = "" %}
+{% case page.category %}
+  {% when "pi" %}{% assign category_label = "Principal Investigator" %}
+  {% when "phd" %}{% assign category_label = "PhD Student" %}
+  {% when "master" %}{% assign category_label = "Master's Student" %}
+  {% when "undergraduate" %}{% assign category_label = "Undergraduate Researcher" %}
+  {% when "alumni" %}{% assign category_label = "Alumnus" %}
+{% endcase %}
+
+<div class="row">
+    <div class="col-12">
+        <p class="mt-2 mb-2 small">
+            <a href="{{ '/members.html' | relative_url }}">
+                <i class="fas fa-arrow-left"></i> Back to Members
+            </a>
+        </p>
+
+        <div class="card border-0 shadow-sm bg-white mb-4">
+            <div class="card-body p-4">
+                <div class="row">
+                    {% if page.photo %}
+                    <div class="col-12 col-md-4 mb-3 mb-md-0">
+                        <img src="{{ page.photo | relative_url }}"
+                             class="img-fluid rounded shadow-sm"
+                             style="object-fit: cover; width: 100%; max-height: 360px;"
+                             alt="{{ page.name }}">
+                    </div>
+                    {% endif %}
+                    <div class="col-12 {% if page.photo %}col-md-8{% endif %}">
+                        <h2 class="mt-0 mb-1">{{ page.name }}</h2>
+                        {% if category_label != "" %}
+                        <div class="mb-2">
+                            <span class="badge badge-pill badge-secondary">{{ category_label }}</span>
+                        </div>
+                        {% endif %}
+                        {% if page.position %}
+                        <div class="text-muted">{{ page.position }}</div>
+                        {% endif %}
+                        {% if page.affiliation %}
+                        <div class="text-muted">{{ page.affiliation }}</div>
+                        {% endif %}
+                        {% if page.joined %}
+                        <div class="text-muted small">Joined: {{ page.joined }}</div>
+                        {% endif %}
+
+                        <div class="mt-2 small">
+                            {% if page.email %}
+                            <div>
+                                <a href="mailto:{{ page.email | encode_email }}">
+                                    <i class="fas fa-at"></i> {{ page.email | replace: "@", "(at)" }}
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if page.office_phone %}
+                            <div><i class="fas fa-phone"></i> Office: {{ page.office_phone }}</div>
+                            {% endif %}
+                            {% if page.mobile %}
+                            <div><i class="fas fa-mobile-alt"></i> Mobile: {{ page.mobile }}</div>
+                            {% endif %}
+                            {% if page.fax %}
+                            <div><i class="fas fa-fax"></i> Fax: {{ page.fax }}</div>
+                            {% endif %}
+                            {% if site.data.display.show_social_icons %}
+                            <div class="mt-1">
+                                {% if page.github %}
+                                <a class="pr-3" target="_blank" href="https://github.com/{{ page.github }}">
+                                    <i class="fab fa-github"></i> {{ page.github }}
+                                </a>
+                                {% endif %}
+                                {% if page.scholar %}
+                                <a class="pr-3" target="_blank" href="{{ page.scholar }}">
+                                    <i class="fab fa-google-scholar"></i> Google Scholar
+                                </a>
+                                {% endif %}
+                                {% if page.orcid %}
+                                <a class="pr-3" target="_blank" href="https://orcid.org/{{ page.orcid }}">
+                                    <i class="fab fa-orcid"></i> ORCID
+                                </a>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        {% if page.interests %}
+                        <div class="mt-3">
+                            <h6>Research Interests</h6>
+                            <ul class="pl-3 mb-0 small">
+                                {% for it in page.interests %}
+                                <li>{{ it }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        {% if page.education %}
+                        <div class="mt-3">
+                            <h6>Education</h6>
+                            <ul class="list-unstyled pl-0 mb-0 small">
+                                {% for ed in page.education %}
+                                <li class="mb-1">
+                                    <span class="text-muted">{{ ed.period }}</span>
+                                    &mdash; <strong>{{ ed.degree }}</strong>, {{ ed.institution }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        {% if page.honors %}
+                        <div class="mt-3">
+                            <h6>Honors &amp; Awards</h6>
+                            <ul class="pl-3 mb-0 small">
+                                {% for it in page.honors %}
+                                <li>{{ it }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if content and content != "" %}
+                {% capture content_stripped %}{{ content | strip }}{% endcapture %}
+                {% if content_stripped != "" %}
+                <hr/>
+                <div class="member-bio">
+                    {{ content }}
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% assign member_pubs = site.publications | sort: "date" | reverse | where_exp: "item", "item.authors contains page.name" %}
+        {% if member_pubs.size > 0 %}
+        <h4 class="pt-2"><i class="fas fa-book"></i> Publications</h4>
+        <div class="my-0 p-0 bg-white shadow-sm rounded-xl">
+            {% for item in member_pubs %}
+            {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>

@@ -4,6 +4,10 @@ homepage:
   show_selected_publications: true
   num_news: 8
 
+# Show GitHub / Google Scholar / ORCID icons on profile and member cards.
+# Email icons are always shown.
+show_social_icons: false
+
 footer_text: >-
   &copy; EEVC Lab, Changwon National University &middot;
   Theme based on

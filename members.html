@@ -4,48 +4,56 @@ title: Members
 navbar_title: Members
 ---
 
-{% assign m = site.data.members %}
+{% assign all_members = site.members | sort: "order" %}
+
+{% assign pis = all_members | where: "category", "pi" %}
+{% assign phds = all_members | where: "category", "phd" %}
+{% assign masters = all_members | where: "category", "master" %}
+{% assign undergrads = all_members | where: "category", "undergraduate" %}
+{% assign alumni = all_members | where: "category", "alumni" %}
 
 <div class="row">
     <div class="col-12">
+        {% if pis.size > 0 %}
         <h2 class="pt-2"><i class="fas fa-user-tie"></i> Principal Investigator</h2>
         <div class="row">
-            {% for person in m.pi %}
+            {% for person in pis %}
             {% include widgets/member_card.html person=person highlight=true %}
             {% endfor %}
         </div>
+        {% endif %}
 
-        {% if m.phd %}
+        {% if phds.size > 0 %}
         <h2 class="pt-4">PhD Students</h2>
         <div class="row">
-            {% for person in m.phd %}
+            {% for person in phds %}
             {% include widgets/member_card.html person=person %}
             {% endfor %}
         </div>
         {% endif %}
 
-        {% if m.master %}
+        {% if masters.size > 0 %}
         <h2 class="pt-4">Master's Students</h2>
         <div class="row">
-            {% for person in m.master %}
+            {% for person in masters %}
             {% include widgets/member_card.html person=person %}
             {% endfor %}
         </div>
         {% endif %}
 
-        {% if m.undergraduate %}
+        {% if undergrads.size > 0 %}
         <h2 class="pt-4">Undergraduate Researchers</h2>
         <div class="row">
-            {% for person in m.undergraduate %}
+            {% for person in undergrads %}
             {% include widgets/member_card.html person=person %}
             {% endfor %}
         </div>
         {% endif %}
 
-        {% if m.alumni %}
+        {% if alumni.size > 0 %}
         <h2 class="pt-4">Alumni</h2>
         <div class="row">
-            {% for person in m.alumni %}
+            {% for person in alumni %}
             {% include widgets/member_card.html person=person %}
             {% endfor %}
         </div>
