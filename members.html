@@ -1,0 +1,54 @@
+---
+layout: default
+title: Members
+navbar_title: Members
+---
+
+{% assign m = site.data.members %}
+
+<div class="row">
+    <div class="col-12">
+        <h2 class="pt-2"><i class="fas fa-user-tie"></i> Principal Investigator</h2>
+        <div class="row">
+            {% for person in m.pi %}
+            {% include widgets/member_card.html person=person highlight=true %}
+            {% endfor %}
+        </div>
+
+        {% if m.phd %}
+        <h2 class="pt-4">PhD Students</h2>
+        <div class="row">
+            {% for person in m.phd %}
+            {% include widgets/member_card.html person=person %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if m.master %}
+        <h2 class="pt-4">Master's Students</h2>
+        <div class="row">
+            {% for person in m.master %}
+            {% include widgets/member_card.html person=person %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if m.undergraduate %}
+        <h2 class="pt-4">Undergraduate Researchers</h2>
+        <div class="row">
+            {% for person in m.undergraduate %}
+            {% include widgets/member_card.html person=person %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if m.alumni %}
+        <h2 class="pt-4">Alumni</h2>
+        <div class="row">
+            {% for person in m.alumni %}
+            {% include widgets/member_card.html person=person %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>

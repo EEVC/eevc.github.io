@@ -1,0 +1,84 @@
+pi:
+- name: Sung-Yong Kim
+  position: Associate Professor
+  affiliation: Department of Architectural Engineering, Changwon National University
+  email: sungyong.kim@changwon.ac.kr
+  joined: 2019-03
+  github: ironikerine
+  photo: /assets/images/empty_300x200.png
+  interests:
+    - Seismic and vibration performance of structural / nonstructural systems
+    - Composite (steel-concrete and timber-concrete) structures
+    - Diagnostic methods for refractory walls in industrial furnaces
+
+phd:
+- name: Jin-Hyun An
+  email: wlsgus5596@gmail.com
+  joined: 2021-11
+  github: An-JinHyun
+  photo: /assets/images/members/jin-hyun-an.jpg
+  interests:
+    - Seismic design
+    - Floor vibration
+    - Numerical analysis &amp; software development
+  honors:
+    - Outstanding Presentation Award, AIK 2025 Spring Conference
+- name: Jun-Jae Lim
+  email: 20247604@gs.cwnu.ac.kr
+  joined: 2023-10
+  github: LIMJUNJAE
+  photo: /assets/images/members/jun-jae-lim.jpg
+  interests:
+    - Timber (CLT, TCC) and steel connections
+    - Nonlinear modeling of welded moment joints
+    - Refractory thickness estimation by ultrasound
+
+master:
+- name: Sang-Joon Lee
+  email: leesangjoonprp@gmail.com
+  joined: 2024-01
+  photo: /assets/images/members/sang-joon-lee.jpg
+  interests:
+    - Civil defense shelters
+    - Blast-resistant SC structures
+    - Inward-opening blast doors
+- name: Jae-Hoon Lee
+  email: 20247242@gs.cwnu.ac.kr
+  joined: 2024-09
+  photo: /assets/images/members/jae-hoon-lee.png
+  affiliation: CEO, Kyungwon Structural Engineering Co.
+  interests:
+    - Structural engineering practice
+
+undergraduate:
+- name: Jin-Hyeong Park
+  email: jubu3706@gmail.com
+  joined: 2023-09
+  github: ParkJinHyeong1
+  photo: /assets/images/members/jin-hyeong-park.jpg
+  interests:
+    - Fastener FEM modeling and analysis
+    - MIDAS Gen / FE-based seismic verification
+- name: Tae-Gyu Kim
+  email: cozydusk@naver.com
+  joined: 2025-01
+  photo: /assets/images/members/tae-gyu-kim.jpg
+- name: Min-Ju Kim
+  email: minzuu013@gmail.com
+  joined: 2025-06
+  photo: /assets/images/members/min-ju-kim.jpg
+- name: Min-Jae Song
+  email: 20253298@gs.cwnu.ac.kr
+  joined: 2025-09
+  github: 20253298minjae
+  photo: /assets/images/members/min-jae-song.png
+- name: Seo-Bo Gyun
+  email: sbg5562@naver.com
+  joined: 2025-10
+  github: seobogyun
+  photo: /assets/images/members/seo-bo-gyun.jpg
+- name: Seong-Bin Lee
+  email: tjdqlsdl410@gmail.com
+  joined: 2025-11
+  github: 20223296-stack
+  photo: /assets/images/members/seong-bin-lee.jpg

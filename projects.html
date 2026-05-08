@@ -1,0 +1,39 @@
+---
+layout: default
+title: Projects
+navbar_title: Projects
+---
+
+<div class="row">
+    <div class="col-12 col-lg-10">
+        <p class="text-muted">
+            EEVC projects are funded by national research programs, in-house seed
+            grants, and industry collaborations. Selected current and recent
+            projects are listed below.
+        </p>
+
+        {% for group in site.data.projects.groups %}
+        <h3 class="pt-3">{{ group.name }}</h3>
+        <div class="bg-white shadow-sm rounded-xl p-3 mb-3">
+            <ul class="list-unstyled mb-0">
+                {% for p in group.items %}
+                <li class="py-2 {% unless forloop.last %}border-bottom{% endunless %}">
+                    <div class="d-flex flex-wrap">
+                        <div class="mr-2"><strong>{{ p.title }}</strong></div>
+                        {% if p.status %}
+                        <span class="ml-auto badge badge-light align-self-center">{{ p.status }}</span>
+                        {% endif %}
+                    </div>
+                    {% if p.title_kr %}
+                    <div class="small text-muted">{{ p.title_kr }}</div>
+                    {% endif %}
+                    {% if p.partner %}
+                    <div class="small"><i class="fas fa-handshake"></i> Partner: {{ p.partner }}</div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>

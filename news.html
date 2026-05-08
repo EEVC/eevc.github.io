@@ -1,0 +1,26 @@
+---
+layout: default
+title: News
+navbar_title: News
+---
+
+{% assign all_news = site.news | sort: "date" | reverse %}
+{% assign news_by_year = all_news | group_by_exp: "item", "item.date | date: '%Y'" %}
+
+<div class="row">
+    <div class="col-12 col-lg-10">
+        {% for year in news_by_year %}
+        <h2 class="pt-3">{{ year.name }}</h2>
+        <div class="my-0 p-0 bg-white shadow-sm rounded-xl">
+            <div class="px-3 py-2 small">
+                {% for item in year.items %}
+                <div class="my-1 d-flex border-bottom py-2">
+                    <div>{{ item.title }}</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

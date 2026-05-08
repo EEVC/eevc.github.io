@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd.exe /c \"dir /b /s \\\\\"C:\\\\Users\\\\user\\\\TeamFolder\\\\Documents\\\\vault\\\\EEVC\\\\Wiki\\\\Members\\\\*.jpg\\\\\" \\\\\"C:\\\\Users\\\\user\\\\TeamFolder\\\\Documents\\\\vault\\\\EEVC\\\\Wiki\\\\Members\\\\*.jpeg\\\\\" \\\\\"C:\\\\Users\\\\user\\\\TeamFolder\\\\Documents\\\\vault\\\\EEVC\\\\Wiki\\\\Members\\\\*.png\\\\\" 2>nul\")",
+      "PowerShell($dest = \"c:\\\\Users\\\\user\\\\GitHub\\\\eevc.github.io\\\\assets\\\\images\\\\members\"; New-Item -ItemType Directory -Path $dest -Force | Out-Null; $src = \"C:\\\\Users\\\\user\\\\TeamFolder\\\\Documents\\\\vault\\\\EEVC\\\\Wiki\\\\Members\"; $copies = @\\( @{from=\"Jin-Hyun An\\\\JH_An.jpg\"; to=\"jin-hyun-an.jpg\"}, @{from=\"Sang-Joon Lee\\\\SJ_Lee.jpg\"; to=\"sang-joon-lee.jpg\"}, @{from=\"Min-Jae Song\\\\KakaoTalk_20251103_123944697.png\"; to=\"min-jae-song.png\"}, @{from=\"Seong-Bin Lee\\\\KakaoTalk_20260126_185834093_01.jpg\"; to=\"seong-bin-lee.jpg\"} \\); foreach \\($c in $copies\\) { $f = Join-Path $src $c.from; $t = Join-Path $dest $c.to; if \\(Test-Path $f\\) { Copy-Item -Path $f -Destination $t -Force; Write-Output \"OK $\\($c.to\\)\" } else { Write-Output \"MISS $f\" } })"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+groups:
+- name: Heritage &amp; AI-Assisted Monitoring
+  items:
+    - title: Cloud-based Damage-Function Estimation and Integrated Monitoring Platform for National Heritage
+      title_kr: 지능형 클라우드 기반 국가유산 손상함수 추정 모델과 통합관제 플랫폼 개발 및 실증
+      status: In progress
+    - title: Structural Safety Analysis of an Autonomous Plate-Track Flight Robot System
+      title_kr: 판형궤도 자율주행비행로봇 시스템 구조 안전성 분석
+      status: In progress
+
+- name: Impact-Echo &amp; Diagnostics for Industrial Structures
+  items:
+    - title: Estimation of Sediment Thickness inside Pipes
+      title_kr: 배관 내 침전물 두께 추정
+      partner: POSCO E&amp;C
+      status: Proposal preparation
+    - title: Integrated Impactor &mdash; Sensor Device Development
+      title_kr: 임팩트·센서 통합 디바이스 개발
+      partner: POSCO E&amp;C
+      status: Proposal preparation
+    - title: Furnace Body / Refractory Engineering and Off-Gas Treatment for a 225&nbsp;m&sup2; Square Electric Melting Furnace
+      title_kr: 단면적 225&thinsp;m&sup2;급 사각 전기용융로 노체·내화물 엔지니어링 및 용융물·배가스 처리기술 개발
+      status: In progress
+    - title: Estimation of Pipe Blockage in Concrete Pumping Lines
+      title_kr: 압송관 막힘 추정
+      status: Not started
+
+- name: Nonstructural Components &amp; Equipment Seismic Performance
+  items:
+    - title: Damping Spacers for Seismic Gap Control of Stored Nonstructural Items
+      title_kr: 적재용 비구조요소 간극제어 및 감쇠형 내진스페이서 개발
+      status: In progress (in-house)
+    - title: Numerical Safety Assessment of Battery Racks
+      title_kr: 수치해석을 통한 배터리랙의 안전성 검토
+      status: In progress
+    - title: Seismic Performance Evaluation of Telecom Battery Racks
+      title_kr: 통신사 배터리랙 내진성능 평가
+      partner: KT, LG U+, SK Telecom
+      status: In progress
+
+- name: Earthquake Records &amp; Generative Methods
+  items:
+    - title: Ground-Motion Selection for Seismic Design
+      title_kr: 지진파 선정 연구
+      status: In progress (in-house)
+    - title: GAN-Based Spectrum-Matched Earthquake Record Generation Framework
+      title_kr: GAN 기반 스펙트럴 매칭 지진기록 생성 프레임워크 개발
+      status: In progress
+
+- name: Composite Structures &amp; Steel
+  items:
+    - title: Failure Design of Aluminum Airport Structures
+      title_kr: 알루미늄을 사용한 공항구조물의 파손성 설계
+      status: Not started
+    - title: Seismic Connection Certification for FCC Composite Columns &amp; FCG Beams (Intermediate Moment Frame)
+      title_kr: FCC 합성기둥과 FCG 보의 합성 중간모멘트골조 내진접합부 기술인증
+      partner: Samsung E&amp;A
+      status: Not started
+    - title: Support-Reaction Analysis via Linear Time-History Method
+      title_kr: 선형시간이력해석법을 통한 지점반력분석
+      status: In progress

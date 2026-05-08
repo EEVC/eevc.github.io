@@ -1,0 +1,46 @@
+<div class="row mt-3">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white">
+            <div class="card-body p-4">
+                <div class="row">
+                    {% if site.data.profile.research_areas %}
+                    <div class="col-lg-7">
+                        <div class="mx-2 my-1">
+                            <h6>Research Areas</h6>
+                            <ul class="list pl-3 mb-1 small">
+                                {% for r in site.data.profile.research_areas %}
+                                <li>{{ r.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% assign pi = site.data.members.pi[0] %}
+                    {% if pi %}
+                    <div class="col-lg-5">
+                        <div class="mx-2 my-1" id="pi">
+                            <h6>Principal Investigator</h6>
+                            <div class="small">
+                                <div><strong>{{ pi.name }}</strong> &mdash; {{ pi.position }}</div>
+                                <div class="text-muted">{{ pi.affiliation }}</div>
+                                <div>
+                                    <a href="mailto:{{ pi.email | encode_email }}">
+                                        <i class="fas fa-at"></i> {{ pi.email | replace: "@", "(at)" }}
+                                    </a>
+                                    {% if pi.github %}
+                                    &middot;
+                                    <a target="_blank" href="https://github.com/{{ pi.github }}">
+                                        <i class="fab fa-github"></i> {{ pi.github }}
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

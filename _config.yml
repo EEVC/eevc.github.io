@@ -34,8 +34,9 @@ plugins:
 
 # timezone: Asia/Shanghai
 
+title: "EEVC Lab"
+description: "Earthquake Engineering and Vibration Control Lab, Changwon National University"
+
 collections:
   - publications
   - news
-  - showcase
-  - posts
