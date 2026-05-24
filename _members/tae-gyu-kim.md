@@ -1,6 +1,6 @@
 ---
 name:           Tae-Gyu Kim
-category:       undergraduate
+category:       alumni
 order:          2
 email:          cozydusk@naver.com
 joined:         "2025-01"

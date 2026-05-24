@@ -1,6 +1,6 @@
 ---
 name:           Jin-Hyeong Park
-category:       undergraduate
+category:       alumni
 order:          1
 email:          jubu3706@gmail.com
 joined:         "2023-09"
